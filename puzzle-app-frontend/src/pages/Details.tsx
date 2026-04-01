@@ -1,6 +1,5 @@
-import './Cart.css'
 
-function Cart() {
+function Details() {
     return (
         <>
             <h1>
@@ -10,4 +9,4 @@ function Cart() {
     )
 }
 
-export default Cart
+export default Details
