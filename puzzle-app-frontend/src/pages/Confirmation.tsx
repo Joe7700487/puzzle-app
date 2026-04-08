@@ -1,15 +1,17 @@
 import {useEffect, useState} from "react";
+import Cookies from "js-cookie";
 
 export default function Confirmation() {
     const [status, setStatus] = useState(null);
     const [customerEmail, setCustomerEmail] = useState('');
+    const COOKIE_KEY = "shopping-cart"
 
     useEffect(() => {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const sessionId = urlParams.get('session_id');
 
-        fetch(`http://localhost:8080/checkout/session-status?session_id=${sessionId}`)
+        fetch(`http://localhost:8080/checkout/session-status?sessionId=${sessionId}`)
             .then((res) => res.json())
             .then((data) => {
                 setStatus(data.status);
@@ -18,6 +20,7 @@ export default function Confirmation() {
     }, []);
 
     if (status === 'complete') {
+        Cookies.remove(COOKIE_KEY)
         return (
             <section id="success">
                 <p>
