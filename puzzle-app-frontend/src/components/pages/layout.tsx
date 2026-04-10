@@ -1,4 +1,5 @@
 import {Link, Outlet} from "react-router";
+import ChatWidget from "../ChatWidget.tsx";
 
 export default function Layout() {
     return (
@@ -26,6 +27,8 @@ export default function Layout() {
             <footer className="border-top py-3 text-center text-muted small">
                 puzzle store, &copy; 2026
             </footer>
+
+            <ChatWidget />
         </div>
     )
 }

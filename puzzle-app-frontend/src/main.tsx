@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import './index.css'
-import Home from "./pages/Home.tsx";
-import Cart from "./pages/Cart.tsx";
-import Checkout from "./pages/Checkout.tsx";
-import Confirmation from "./pages/Confirmation.tsx";
-import Details from "./pages/Details.tsx";
-import Layout from "./pages/layout.tsx";
+import Home from "./components/pages/Home.tsx";
+import Cart from "./components/pages/Cart.tsx";
+import Checkout from "./components/pages/Checkout.tsx";
+import Confirmation from "./components/pages/Confirmation.tsx";
+import Details from "./components/pages/Details.tsx";
+import Layout from "./components/pages/layout.tsx";
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>

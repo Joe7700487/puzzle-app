@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import type {Puzzle} from "../types/Puzzle";
+import type {Puzzle} from "../../types/Puzzle.tsx";
 import {Link} from "react-router";
 
 export default function Home() {

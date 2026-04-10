@@ -1,8 +1,8 @@
 import {useParams} from "react-router";
 import {useEffect, useState} from "react";
-import type {Puzzle} from "../types/Puzzle.tsx";
+import type {Puzzle} from "../../types/Puzzle.tsx";
 import Cookies from "js-cookie";
-import type {Cart, CartItem} from "../types/Cart.tsx";
+import type {Cart, CartItem} from "../../types/Cart.tsx";
 
 export default function Details() {
     const {id} = useParams()
