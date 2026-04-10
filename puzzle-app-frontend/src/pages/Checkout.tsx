@@ -28,18 +28,18 @@ export default function Checkout() {
     const options:StripeEmbeddedCheckoutOptions = {fetchClientSecret}
 
     return (
-        <>
-            <h1>
-                Checkout
-            </h1>
-            <div id="checkout">
-                <EmbeddedCheckoutProvider
-                    stripe={stripePromise}
-                    options={options}
-                >
-                    <EmbeddedCheckout />
-                </EmbeddedCheckoutProvider>
+        <section className="py-2">
+            <h1 className="h2 mb-4">Checkout</h1>
+            <div id="checkout" className="card">
+                <div className="card-body">
+                    <EmbeddedCheckoutProvider
+                        stripe={stripePromise}
+                        options={options}
+                    >
+                        <EmbeddedCheckout />
+                    </EmbeddedCheckoutProvider>
+                </div>
             </div>
-        </>
+        </section>
     )
 }

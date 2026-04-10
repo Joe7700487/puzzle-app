@@ -42,10 +42,10 @@ export default function Details() {
     }
 
     return (
-        <>
+        <section className="py-2">
             {
                 showMessage && (
-                    <p className="text-success">
+                    <p className="alert alert-success" role="alert">
                         Item added to cart successfully
                     </p>
                 )
@@ -53,17 +53,19 @@ export default function Details() {
 
             {
                 puzzle && (
-                    <div>
-                        <h1>{puzzle.name}</h1>
-                        <p>{puzzle.description}</p>
-                        <p>
+                    <div className="card text-start">
+                        <div className="card-body">
+                        <h1 className="h3 card-title">{puzzle.name}</h1>
+                        <p className="card-text mb-4">{puzzle.description}</p>
+                        <p className="mb-0">
                             <button className="btn btn-primary" onClick={handleAddToCart}>
                                 Add to cart
                             </button>
                         </p>
+                        </div>
                     </div>
                 )
             }
-        </>
+        </section>
     )
 }
