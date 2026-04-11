@@ -4,6 +4,8 @@ import type {Puzzle} from "../../types/Puzzle.tsx";
 import Cookies from "js-cookie";
 import type {Cart, CartItem} from "../../types/Cart.tsx";
 
+const PLACEHOLDER_IMAGE = "/placeholder-image.svg";
+
 export default function Details() {
     const {id} = useParams()
     const [puzzle, setPuzzle] = useState<Puzzle>()
@@ -54,14 +56,25 @@ export default function Details() {
             {
                 puzzle && (
                     <div className="card text-start">
-                        <div className="card-body">
-                        <h1 className="h3 card-title">{puzzle.name}</h1>
-                        <p className="card-text mb-4">{puzzle.description}</p>
-                        <p className="mb-0">
-                            <button className="btn btn-primary" onClick={handleAddToCart}>
-                                Add to cart
-                            </button>
-                        </p>
+                        <div className="d-flex">
+                            <img
+                                src={puzzle.image?.trim() ? puzzle.image : PLACEHOLDER_IMAGE}
+                                alt={puzzle.name}
+                                style={{ width: 300, height: 300, objectFit: "cover", flexShrink: 0 }}
+                                onError={(e) => {
+                                    e.currentTarget.onerror = null;
+                                    e.currentTarget.src = PLACEHOLDER_IMAGE;
+                                }}
+                            />
+                            <div className="card-body">
+                                <h1 className="h3 card-title">{puzzle.name}</h1>
+                                <p className="card-text mb-4">{puzzle.description}</p>
+                                <p className="mb-0">
+                                    <button className="btn btn-primary" onClick={handleAddToCart}>
+                                        Add to cart
+                                    </button>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 )

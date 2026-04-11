@@ -12,7 +12,7 @@ interface CartRow {
     quantity: number;
 }
 
-// get cart items
+// read cart items from cookies
 function readCartItems(): CartItem[] {
     const raw = Cookies.get(COOKIE_KEY);
     if (!raw) return [];
@@ -29,6 +29,7 @@ function readCartItems(): CartItem[] {
     }
 }
 
+// save cart items to cookies
 function writeCartItems(items: CartItem[]): void {
     if (items.length === 0) {
         Cookies.remove(COOKIE_KEY);
@@ -39,9 +40,11 @@ function writeCartItems(items: CartItem[]): void {
 }
 
 function Cart() {
+    // state management
     const [rows, setRows] = useState<CartRow[]>([]);
     const [loading, setLoading] = useState(true);
 
+    // handle quantity updates for cart items
     const handleQuantityChange = (puzzleId: number, rawValue: string): void => {
         const parsed = Number.parseInt(rawValue, 10);
         const nextQuantity = Number.isNaN(parsed) ? 0 : Math.max(0, parsed);
@@ -58,8 +61,10 @@ function Cart() {
         });
     };
 
+    // load cart items and fetch puzzle details
     useEffect(() => {
         const loadCart = async () => {
+            // get cart items from cookies
             const cartItems = readCartItems();
             if (cartItems.length === 0) {
                 setRows([]);
@@ -72,6 +77,7 @@ function Cart() {
                 const puzzles = (await res.json()) as Puzzle[];
                 const puzzleById = new Map(puzzles.map((puzzle) => [puzzle.id, puzzle]));
 
+                // merge cart items with puzzle details
                 const nextRows: CartRow[] = cartItems
                     // match cart items with puzzle names
                     .map((item) => {
